@@ -7,10 +7,21 @@
     <router-link to="/pokécard">Pokécard</router-link> |
     <router-link to="/pokédex">Pokédex</router-link>
     <button class="button" style="float: right">Login</button>
-    <button class="button" style="float: right">Signup</button>
+    <button @click="goToSignup()" class="button" style="float: right">Signup</button>
   </div>
   <router-view />
 </template>
+
+<script>
+export default {
+  name: 'App',
+  methods:{
+       goToSignup(){
+   this.$router.push('/signup'); 
+      }
+  }
+}
+</script>
 
 <style>
 #app {
