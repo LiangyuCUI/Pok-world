@@ -1,13 +1,20 @@
 <template>
   <div id="nav">
-    <a href="https://fontmeme.com/pokemon-font/" style="float: left"><img src="https://fontmeme.com/permalink/210803/beb1da639c858a878f09524212c0da73.png" alt="pokemon-font" border="0"></a>
+    <a style="float: left"
+      ><img
+        src="https://fontmeme.com/permalink/210803/beb1da639c858a878f09524212c0da73.png"
+        alt="pokemon-font"
+        border="0"
+    /></a>
     <!-- <b-navbar-brand href="#" style="float: left">Pokéworld</b-navbar-brand> -->
     <router-link to="/" class="home">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/pokécard">Pokécard</router-link> |
     <router-link to="/pokédex">Pokédex</router-link>
-    <button class="button" style="float: right">Login</button>
-    <button @click="goToSignup()" class="button" style="float: right">Signup</button>
+    <button @click="goToLogin()" class="button" style="float: right">Login</button>
+    <button @click="goToSignup()" class="button" style="float: right">
+      Signup
+    </button>
   </div>
   <router-view />
 </template>
@@ -17,10 +24,13 @@ export default {
   name: 'App',
   methods:{
        goToSignup(){
-   this.$router.push('/signup'); 
+   this.$router.push('/signup');
+       },
+       goToLogin(){
+   this.$router.push('/login'); 
       }
-  }
 }
+};
 </script>
 
 <style>
@@ -45,7 +55,7 @@ export default {
   color: #f7f709;
 }
 #nav {
-  background-color: red;
+  background-color: rgba(247, 7, 7, 0.678);
   text-align: center;
   font-family: cursive;
 }
