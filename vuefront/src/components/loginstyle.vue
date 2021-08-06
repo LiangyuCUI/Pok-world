@@ -41,7 +41,7 @@ export default {
 .form-body{
      color: #000;
   background: rgb(255, 255, 255);
-  display: inline-block;
+  /* display: inline-block; */
   height: 15em;
   width: 12em;
   padding: 1em;
@@ -52,8 +52,19 @@ export default {
   overflow-wrap: break-word;
   overflow: hidden;
   border-radius: 1.5em;
+  margin-right: auto;
+margin-left: auto;
 }
 .loginlogo{
   height:135px;
+}
+
+h1{
+  text-align: center;
+}
+.loginlogo{
+  margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 </style>
