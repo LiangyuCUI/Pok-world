@@ -30,8 +30,12 @@ body{
 }
 .home{
   color:white;
+margin-right: auto;
+margin-left: auto;
+  width: 510px;
 }
 .homelogo{
   height:135px;
 }
+
 </style>
