@@ -45,8 +45,8 @@
       <input type="date" value="2000-06-01" max="2008-01-01">
     </div>
     <!-- <button class="button button-block">signup</button> -->
-    <span class="signupbutton" type="button"><img src=../assets/pokeball.png height="35"/></span>
-    <span class="clearButton" type="button">&#10060;</span>
+    <span class="signupbutton" type="button" title="Click me to signup"><img src=../assets/pokeball.png height="35"/></span>
+    <span class="clearButton" type="button" title="Click me to clear">&#10060;</span>
   </div>
 </template>
 <script>
