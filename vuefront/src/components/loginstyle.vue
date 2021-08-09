@@ -28,7 +28,7 @@
 
       <p class="forgot"><a href="https://tenor.com/view/will-smith-fresh-prince-dramatic-gif-11531919">Forgot Password?</a></p>
 
-      <span class="loginbutton" type="button"><img src=../assets/pokeball.png height="35"/></span>
+      <span class="loginbutton" type="button"  title="Click me to login"><img src=../assets/pokeball.png height="35"/></span>
   </div>
 </template>
 <script>
