@@ -38,7 +38,7 @@ export default {
 
   methods: {
     getAllPokemon() {
-      P.getPokemonsList({ limit: 10 }).then((response) => {
+      P.getPokemonsList({ limit: 100 }).then((response) => {
         console.log(response);
         response.results.forEach((pokemon) => {
           P.getPokemonByName(pokemon.name).then((pokemonData) => {
@@ -82,7 +82,5 @@ export default {
 .pokécard:focus {
   box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.7);
   transform: scale(1.11 );
-  position: relative;
-  z-index: 5;
 }
 </style>
