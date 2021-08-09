@@ -1,15 +1,17 @@
 <template>
+<div>
+    <form @submit.prevent="loginUser">
 <div class="form-head">
     <h1>Welcome Back!</h1>
     <img class="loginlogo" src="../assets/hug.png">
 </div>
 
     <div class="form-body">
-      <div class="name">
-       <label for="name" class="label-title">Name : </label>
-         <input
-        type="text"
-        id="name"
+      <div class="email">
+       <label for="email" class="label-title">Email : </label>
+         <input v-model="email"
+        type="email"
+        id="email"
         class="form-input"
         required="required"
       />
@@ -17,7 +19,7 @@
 
          <div class="password">
       <label for="password" class="label-title">Password : </label>
-      <input
+      <input v-model="password"
         type="password"
         id="password"
         class="form-input"
@@ -28,12 +30,57 @@
 
       <p class="forgot"><a href="https://tenor.com/view/will-smith-fresh-prince-dramatic-gif-11531919">Forgot Password?</a></p>
 
-      <span class="loginbutton" type="button"  title="Click me to login"><img src=../assets/pokeball.png height="35"/></span>
+      <span @click="loginUser" class="loginbutton" type="submit"><img src=../assets/pokeball.png height="35"/></span>
   </div>
+    </form>
+</div>
 </template>
+
 <script>
+
+import axios from 'axios'
+
 export default {
   name: "loginstyle",
+ data()
+{
+  return {
+      email: '',
+      password: '',
+    }
+},
+
+  methods: {
+loginUser: function (){
+  axios
+  .post('http://127.0.0.1:8000/api/auth/login', 
+  {
+    email: this.email,
+    password: this.password,
+    
+  }) 
+
+  .then((response) => {
+    console.log('LOGGED IN! \n ' + 'token: ' + response.data.access_token)
+            let token=response.data.access_token;
+            localStorage.setItem('token', token);
+            this.$router.push({name: "Pokécard"});
+            })
+
+// .then((response) => {
+//                 localStorage.setItem('token', response.data.user)
+//                 this.$router.push({name: "Pokécard"})           
+//             })
+
+  // .then(() => {
+  //   this.$router.push({name: "Pokécard"});
+  // })
+
+}}
+
+
+
+
 };
 </script>
 
