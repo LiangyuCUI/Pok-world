@@ -1,9 +1,11 @@
 <template>
+<div>
   <h1>SIGNUP</h1>
+  <form @submit.prevent="createUser">
   <div class="form-body">
     <div class="name">
       <label for="name" class="label-title">Name : </label>
-      <input
+      <input v-model="name"
         type="text"
         id="name"
         class="form-input"
@@ -12,7 +14,7 @@
     </div>
     <div class="email">
       <label for="email" class="label-title">Email : </label>
-      <input
+      <input v-model="email"
         type="email"
         id="email"
         class="form-input"
@@ -21,7 +23,7 @@
     </div>
     <div class="password">
       <label for="password" class="label-title">Password : </label>
-      <input
+      <input v-model="password"
         type="password"
         id="password"
         class="form-input"
@@ -30,30 +32,67 @@
       />
     </div>
     <div class="confirmpassword">
-      <label for="confirm-password" class="label-title"
+      <label for="password_confirmation" class="label-title"
         >Confirm Password:
       </label>
-      <input
+      <input v-model="password_confirmation"
         type="password"
         class="form-input"
-        id="confirm-password"
+        id="password_confirmation"
         required="required"
       />
     </div>
-    <div class="dateofbirth">
-        <label for="dateofbirth" class="label-title">Date of birth : </label>
-      <input type="date" value="2000-06-01" max="2008-01-01">
+    <div class="birthdate">
+        <label for="birthdate" class="label-title">Birthdate : </label>
+      <input v-model="birthdate" type="date">
     </div>
     <!-- <button class="button button-block">signup</button> -->
-    <span class="signupbutton" type="button" title="Click me to signup"><img src=../assets/pokeball.png height="35"/></span>
-    <span class="clearButton" type="button" title="Click me to clear">&#10060;</span>
+    <span @click="createUser" class="signupbutton" type="submit"><img src=../assets/pokeball.png height="35"/></span>
+    <span class="clearButton" type="button">&#10060;</span>
+  </div>
+    </form>
   </div>
 </template>
+
 <script>
+
+import axios from 'axios'
+
 export default {
   name: "signupstyle",
+  data()
+{
+  return {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+      birthdate: '',
+    }
+},
+
+  methods: {
+createUser: function (){
+
+  axios
+  .post('http://127.0.0.1:8000/api/auth/register', 
+  {
+    name: this.name,
+    email: this.email,
+    password: this.password,
+    password_confirmation: this.password_confirmation,
+    birthdate: this.birthdate,
+  }) 
+  
+  .then((response) => {
+    (response.data)
+  })
+
+}}
 };
 </script>
+
+
 <style scoped>
 .form-body{
      color: #000;
