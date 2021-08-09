@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="nav">
     <a style="float: left"
       ><img
@@ -17,6 +18,7 @@
     </button>
   </div>
   <router-view />
+  </div>
 </template>
 
 <script>
