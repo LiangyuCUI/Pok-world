@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <!-- <img class="img" alt="poke logo" src="../assets/pokelogo.png"> -->
-    <HelloWorld id="msg" msg="welcome to pokéworld~~" />
+    <HelloWorld/>
+    <signupstyle/>
+    <a href="https://fontmeme.com/pokemon-font/"><img src="https://fontmeme.com/permalink/210806/c0ac114dbb6ddb6b4e15613ccc1a561e.png" alt="pokemon-font" border="0"></a>
+    <img class="homelogo" src="../assets/pikachu.png">
   </div>
-  <!-- <img alt="Home background" src="../assets/background.jpg"> -->
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
   components: {
@@ -18,11 +18,24 @@ export default {
 };
 </script>
 <style>
-body {
-  background-image: url("../assets/background.jpg");
+/* body {
+  background-image:url("../assets/background.jpg");
   background-repeat: no-repeat;
-   /* background-size: 1520px 155367px; */
-   background-size: cover;
-   height: 100%;
+  background-size: cover;
+  background-size:100%;
+}  */
+body{
+  background-color:#e7f2fc;
+  background-position: center;
 }
+.home{
+  color:white;
+margin-right: auto;
+margin-left: auto;
+  width: 510px;
+}
+.homelogo{
+  height:135px;
+}
+
 </style>
