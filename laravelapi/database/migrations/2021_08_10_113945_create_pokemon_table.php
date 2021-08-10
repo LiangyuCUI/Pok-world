@@ -19,6 +19,7 @@ class CreatePokemonTable extends Migration
             $table->string('height');
             $table->string('base_experience');
             $table->string('weight');
+            $table->string('image');
             $table->timestamps();
         });
     }

@@ -14,5 +14,6 @@ class Pokemon extends Model
         'height',
         'base_experience',
         'weight',
+        'image',
     ];
 }
