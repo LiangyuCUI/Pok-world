@@ -86,6 +86,7 @@ createUser: function (){
   
   .then((response) => {
     (response.data)
+    this.$router.push({name: "Login"});
   })
 
 }}

@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="pokétitle">
     <a
       ><img
@@ -12,7 +13,7 @@
     >
   </div>
 
-  <div v-for="(item, index) in pokemonList" :key="index" class="pokécard">
+  <div v-for="(item, index) in pokemonList " :key="index" class="pokécard">
     <h3>{{ item.name }}</h3>
     <img :src="item.sprites.front_default" width="100" height="100" />
     <img :src="item.sprites.back_default" width="100" height="100" />
@@ -21,7 +22,9 @@
     <p>base experience: {{ item.base_experience }}XP</p>
     <p>weight: {{ item.weight }}</p>
   </div>
+  </div>
 </template>
+
 <script>
 const Pokedex = require("pokeapi-js-wrapper");
 const P = new Pokedex.Pokedex();
@@ -32,13 +35,14 @@ export default {
       pokemonList: [],
     };
   },
+  
   created() {
     this.getAllPokemon();
   },
 
   methods: {
     getAllPokemon() {
-      P.getPokemonsList({ limit: 100 }).then((response) => {
+      P.getPokemonsList({ limit: 151 }).then((response) => {
         console.log(response);
         response.results.forEach((pokemon) => {
           P.getPokemonByName(pokemon.name).then((pokemonData) => {

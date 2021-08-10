@@ -14,6 +14,7 @@
     </p>
   </div>
 </template>
+
 <style>
 /* body {
   background-image: url("../assets/aboutbackground.jpg") !important;

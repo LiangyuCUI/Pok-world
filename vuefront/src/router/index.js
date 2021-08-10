@@ -46,6 +46,14 @@ const routes = [
     // this generates a separate chunk (pokécard.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "pokécard" */ '../views/Login.vue')
+  },
+  {
+    path: '/pokemonlist',
+    name: 'PokemonList',
+    // route level code-splitting
+    // this generates a separate chunk (pokécard.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "pokécard" */ '../views/PokemonList.vue')
   }
 ]
 
