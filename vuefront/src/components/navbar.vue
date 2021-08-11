@@ -11,6 +11,7 @@
     <router-link to="/" class="homerouter">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/pokécard">Pokécard</router-link> |
+    <router-link to="/pokelist">Pokelist</router-link> |
     <router-link to="/pokédex">Pokédex</router-link>
     <button @click="goToLogin()" class="button" style="float: right">Login</button>
     <button @click="goToSignup()" class="button" style="float: right">

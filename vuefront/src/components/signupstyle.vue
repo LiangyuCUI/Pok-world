@@ -111,6 +111,22 @@ export default {
 
       this.errors = [];
 
+
+  axios
+  .post('http://127.0.0.1:8000/api/auth/register', 
+  {
+    name: this.name,
+    email: this.email,
+    password: this.password,
+    password_confirmation: this.password_confirmation,
+    birthdate: this.birthdate,
+  }) 
+  
+  .then((response) => {
+    (response.data)
+    this.$router.push({name: "Login"});
+  })
+
       if (!this.name) {
         this.errors.push("Name required.");
       }
@@ -126,7 +142,7 @@ export default {
       if (!this.birthdate) {
         this.errors.push("Birthdate required.");
       }
-
+      
       e.preventDefault();
     },
   },

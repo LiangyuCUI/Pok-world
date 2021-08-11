@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="pokétitle">
     <a
       ><img
@@ -38,7 +39,9 @@
       Details
     </button>
   </div>
+  </div>
 </template>
+
 <script>
 // import Pokemondetail from "@/components/Pokemondetail.vue";
 const Pokedex = require("pokeapi-js-wrapper");
@@ -50,13 +53,14 @@ export default {
       pokemonList: [],
     };
   },
+  
   created() {
     this.getAllPokemon();
   },
 
   methods: {
     getAllPokemon() {
-      P.getPokemonsList({ limit: 15 }).then((response) => {
+      P.getPokemonsList({ limit: 151 }).then((response) => {
         console.log(response);
         response.results.forEach((pokemon) => {
           P.getPokemonByName(pokemon.name).then((pokemonData) => {

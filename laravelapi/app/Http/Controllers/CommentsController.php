@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Models\Pokemon;
 
-class PokemonController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +14,16 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::all();
+        $comment = Comment::all();
 
-        return response()->json($pokemons);
+        return response()->json($comment);
     }
 
-    public function getPokemonById($id){
+    public function getCommentById($id){
 
-        $pokemon = Pokemon::find($id);
+        $comment = Comment::find($id);
 
-        return response()->json($pokemon);
+        return response()->json($comment);
     }
 
     /**
@@ -31,9 +31,17 @@ class PokemonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $comment = new Comment;
+        $comment->content = $request->content;
+        $comment->user_id = $request->user_id;
+        $comment->pokemon_id = $request->pokemon_id;
+        $comment->save();
+ 
+        return response()->json([
+            'message' => 'New Comment Added'
+        ]);
     }
 
     /**
@@ -50,10 +58,10 @@ class PokemonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comment $comment)
     {
         //
     }
@@ -61,10 +69,10 @@ class PokemonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -73,10 +81,10 @@ class PokemonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -84,10 +92,10 @@ class PokemonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
         //
     }

@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pokemon extends Model
+class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'height',
-        'base_experience',
-        'weight',
-        'image',
+        'content',
+        'user_id',
+        'pokemon_id',
     ];
 }
