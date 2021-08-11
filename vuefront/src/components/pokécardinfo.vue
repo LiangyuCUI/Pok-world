@@ -1,5 +1,4 @@
 <template>
-<div>
   <div class="pokétitle">
     <a
       ><img
@@ -21,52 +20,39 @@
     >
   </div>
 
-  <div v-for="(item, index) in pokemonList" :key="index" class="pokécard">
-    <!-- <Pokemondetail
-      :id="id"
-      :height="height"
-      :base_experience="base_experience"
-      :weight="weight"
-    ></Pokemondetail> -->
-    <h3>{{ item.name }}</h3>
-    <img :src="item.sprites.front_default" width="120" height="120" />
-    <img :src="item.sprites.back_default" width="120" height="120" />
-    <p>Pokédex: {{ item.id }}</p>
-    <p>height: {{ item.height }}dm</p>
-    <p>base experience: {{ item.base_experience }}XP</p>
-    <p>weight: {{ item.weight }}</p>
-    <button style="float: right" class="pokedetails" v-on:click="redirect()">
-      Details
-    </button>
-  </div>
-  </div>
+  
 </template>
-
 <script>
 // import Pokemondetail from "@/components/Pokemondetail.vue";
 const Pokedex = require("pokeapi-js-wrapper");
 const P = new Pokedex.Pokedex();
 export default {
-  name: "pokécard",
-  data: function () {
-    return {
-      pokemonList: [],
-    };
-  },
-  
+  name: "pokécardinfo",
+ 
   created() {
     this.getAllPokemon();
   },
 
   methods: {
     getAllPokemon() {
-      P.getPokemonsList({ limit: 151 }).then((response) => {
+      P.getPokemonsList({ limit: 15 }).then((response) => {
         console.log(response);
         response.results.forEach((pokemon) => {
           P.getPokemonByName(pokemon.name).then((pokemonData) => {
             this.pokemonList.push(pokemonData);
           });
         });
+      });
+    },
+    redirect() {
+      this.$router.push({
+        name: "Pokédex",
+        params: {
+          id: this.name,
+          height: this.height,
+          base_experience: this.base_experience,
+          weight: this.weight,
+        },
       });
     },
   },
@@ -106,4 +92,3 @@ export default {
   transform: scale(1.11);
 }
 </style>
-
