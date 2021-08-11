@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -30,3 +31,7 @@ Route::group([
 
 Route::get('users', [UserController::class, 'index']);
 
+Route::get('pokemons', [PokemonController::class, 'index']);
+
+
+Route::get('pokemons/{id}', [PokemonController::class, 'getById']);
