@@ -1,44 +1,38 @@
 <template>
-<div>
-  <div class="pokétitle">
-    <a
-      ><img
-        src="https://fontmeme.com/permalink/210807/fc49a4d2be3e83b1f433575dc5b371a9.png"
-        alt="pokemon-font"
-        border="0"
-    /></a>
-    <input
-      type="text"
-      placeholder="Search your pokécard"
-      style="float: right"
-    />
-    <span
-      class="searchbutton"
-      type="button"
-      title="Click me to search"
-      style="float: right"
-      ><img src=../assets/puff.png height="42"/></span
-    >
-  </div>
+  <div>
+    <div class="pokétitle">
+      <a
+        ><img
+          src="https://fontmeme.com/permalink/210807/fc49a4d2be3e83b1f433575dc5b371a9.png"
+          alt="pokemon-font"
+          border="0"
+      /></a>
+      <input
+        type="text"
+        placeholder="Search your pokécard"
+        style="float: right"
+      />
+      <span
+        class="searchbutton"
+        type="button"
+        title="Click me to search"
+        style="float: right"
+        ><img src=../assets/puff.png height="42"/></span
+      >
+    </div>
 
-  <div v-for="(item, index) in pokemonList" :key="index" class="pokécard">
-    <!-- <Pokemondetail
-      :id="id"
-      :height="height"
-      :base_experience="base_experience"
-      :weight="weight"
-    ></Pokemondetail> -->
-    <h3>{{ item.name }}</h3>
-    <img :src="item.sprites.front_default" width="120" height="120" />
-    <img :src="item.sprites.back_default" width="120" height="120" />
-    <p>Pokédex: {{ item.id }}</p>
-    <p>height: {{ item.height }}dm</p>
-    <p>base experience: {{ item.base_experience }}XP</p>
-    <p>weight: {{ item.weight }}</p>
-    <button style="float: right" class="pokedetails" v-on:click="redirect()">
-      Details
-    </button>
-  </div>
+    <div v-for="(item, index) in pokemonList" :key="index" class="pokécard">
+      <h3>{{ item.name }}</h3>
+      <img :src="item.sprites.front_default" width="120" height="120" />
+      <img :src="item.sprites.back_default" width="120" height="120" />
+      <p>Pokédex: {{ item.id }}</p>
+      <p>height: {{ item.height }}dm</p>
+      <p>base experience: {{ item.base_experience }}XP</p>
+      <p>weight: {{ item.weight }}</p>
+      <button style="float: right" class="pokedetails" v-on:click="redirect()">
+        Details
+      </button>
+    </div>
   </div>
 </template>
 
@@ -53,7 +47,7 @@ export default {
       pokemonList: [],
     };
   },
-  
+
   created() {
     this.getAllPokemon();
   },
@@ -74,12 +68,7 @@ export default {
 };
 </script>
 <style>
-/* body {
-  background-image: url("../assets/jigglypuffbackground.jpg") !important;
-  background-repeat: no-repeat;
-   /* background-size: 1520px 155367px; */
-/* background-size: cover;
-} */
+
 .pokétitle {
   margin-left: auto;
   margin-right: auto;
