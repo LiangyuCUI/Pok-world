@@ -7,12 +7,10 @@
         alt="pokemon-font"
         border="0"
     /></a>
-    <!-- <b-navbar-brand href="#" style="float: left">Pokéworld</b-navbar-brand> -->
     <router-link to="/" class="homerouter">Home</router-link> |
-    <router-link to="/about">About</router-link> |
     <router-link to="/pokécard">Pokécard</router-link> |
-    <router-link to="/pokelist">Pokelist</router-link> |
-    <router-link to="/pokédex">Pokédex</router-link>
+    <router-link to="/pokédex">Pokédex</router-link> |
+    <router-link to="/about">About</router-link>
     <button @click="goToLogin()" class="button" style="float: right">Login</button>
     <button @click="goToSignup()" class="button" style="float: right">
       Signup
@@ -82,7 +80,5 @@ export default {
   box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
   transition: all 0.4s ease 0s;
 }
-/* p {
-  font-family: Rockwell Extra Bold;
-} */
+
 </style>

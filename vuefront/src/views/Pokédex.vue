@@ -10,7 +10,7 @@
     <h1>{{ $route.params.height }}</h1>
     <h1>{{ $route.params.base_experience }}</h1>
     <h1>{{ $route.params.weight }}</h1>
-    <a href="http://localhost:8080/pok%C3%A9card">
+    <a href="http://localhost:8080/pokécard">
       <button
         class="back-button"
         style="background-color: #ff7f50"
