@@ -1,57 +1,37 @@
 <template>
   <div class="details">
-    <Pokemondetail
-      :id="id"
-      :height="height"
-      :base_experience="base_experience"
-      :weight="weight"
-    ></Pokemondetail>
-    <h1>{{ $route.params.id }}</h1>
-    <h1>{{ $route.params.height }}</h1>
-    <h1>{{ $route.params.base_experience }}</h1>
-    <h1>{{ $route.params.weight }}</h1>
-    <a href="http://localhost:8080/pokécard">
-      <button
-        class="back-button"
-        style="background-color: #ff7f50"
-        @click="$router.go(-1)"
-      >
-        Back to my pokécards
-      </button></a
-    >
 
-    <div class="pokédex">
-      <!-- <pokemondetail /> -->
-    </div>
+    <img :src="require(`@/assets/${$route.params.image}`)" width="150" height="150" />
+    <!-- <h1>Id: {{ $route.params.id }}</h1> -->
+    <h1>Name: {{ $route.params.name }}</h1>
+    <h1>Height: {{ $route.params.height }}</h1>
+    <h1>Base experience: {{ $route.params.base_experience }}</h1>
+    <h1>Weight: {{ $route.params.weight }}</h1>
+    
   </div>
 </template>
 <script>
-import Pokemondetail from "@/components/Pokemondetail.vue";
+
 export default {
-  name: "pokécard",
-  components: { Pokemondetail },
-};
+
+}
 </script>
+
 <style>
 .details {
-  text-decoration: none;
-  color: #000;
-  background: rgb(247, 234, 243);
   display: inline-block;
-  height: 20em;
-  width: 20em;
+  height: 30em;
+  width: 40em;
   padding: 1em;
+  background: white;
+  margin: 1em;
+  border-radius: 1.5em;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
   transition: transform 0.15s linear;
   margin: 1em;
   flex-wrap: wrap;
   overflow-wrap: break-word;
+  overflow: hidden;
 }
-.details:hover,
-.details:focus {
-  box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
-  transform: scale(1.25);
-  position: relative;
-  z-index: 5;
-}
+
 </style>
