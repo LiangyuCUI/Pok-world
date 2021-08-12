@@ -67,21 +67,15 @@ export default {
 
         .then((response) => {
           console.log(
-            "LOGGED IN! \n " + "token: " + response.data.access_token
+            "LOGGED IN! \n " + "token: " + response.data.token
           );
-          let token = response.data.access_token;
+          console.log(response.data);
+          let token = response.data.token;
+          
           localStorage.setItem("token", token);
-          this.$router.push({ name: "Pokelist" });
+          // this.$router.push({ name: "Pokelist" });
         });
 
-      // .then((response) => {
-      //                 localStorage.setItem('token', response.data.user)
-      //                 this.$router.push({name: "Pokécard"})
-      //             })
-
-      // .then(() => {
-      //   this.$router.push({name: "Pokécard"});
-      // })
     },
   },
 };
