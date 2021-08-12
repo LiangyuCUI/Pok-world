@@ -1,20 +1,57 @@
 <template>
-  <div class="details">
-
-    <img :src="require(`@/assets/${$route.params.image}`)" width="150" height="150" />
-    <!-- <h1>Id: {{ $route.params.id }}</h1> -->
-    <h1>Name: {{ $route.params.name }}</h1>
-    <h1>Height: {{ $route.params.height }}</h1>
-    <h1>Base experience: {{ $route.params.base_experience }}</h1>
-    <h1>Weight: {{ $route.params.weight }}</h1>
-    
+  <div>
+    <div>
+      {{ $route.params.content }}
+    </div>
+    <div class="details">
+      <img
+        :src="require(`@/assets/${$route.params.image}`)"
+        width="150"
+        height="150"
+      />
+      <!-- <h1>Id: {{ $route.params.id }}</h1> -->
+      <h1>Name: {{ $route.params.name }}</h1>
+      <h1>Height: {{ $route.params.height }}</h1>
+      <h1>Base experience: {{ $route.params.base_experience }}</h1>
+      <h1>Weight: {{ $route.params.weight }}</h1>
+    </div>
+    <CommentCard
+      v-for="(item, index) in Comment"
+      :key="index"
+      :comments="item"
+    />
   </div>
 </template>
 <script>
+import CommentCard from "@/components/CommentCard.vue";
+import axios from "axios";
 
 export default {
+  name: "Pokédex",
+  components: {
+    CommentCard,
+  },
+  data() {
+    return {
+      Comment: [],
+    };
+  },
+  created() {
+    this.getAllcomments();
+  },
 
-}
+  methods: {
+    getAllcomments() {
+      axios
+        .get("http://127.0.0.1:8000/api/comments/search/pokemons/" + this.$route.params.id )
+        .then((response) => {
+          // console.log(response);
+          this.Comment = response.data;
+          console.log(response.data);
+        });
+    },
+  },
+};
 </script>
 
 <style>
@@ -34,4 +71,7 @@ export default {
   overflow: hidden;
 }
 
+.comment {
+  font-size: 100;
+}
 </style>
