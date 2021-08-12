@@ -38,9 +38,9 @@ Route::get('pokemons/{id}', [PokemonController::class, 'getPokemonById']);
 
 
 
-//-----------------ROUTES COMMENTS-----------------------------------//
+//-------------------------COMMENTS-----------------------------------//
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/comments', [CommentsController::class, 'store']);
+    // Route::post('/comments', [CommentsController::class, 'store']);
     Route::post('/createcomment', [CommentsController::class, 'create']);
     Route::put('/comments/{id}', [CommentsController::class, 'update']);
     Route::delete('/comments/{id}', [CommentsController::class, 'destroy']);

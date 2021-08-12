@@ -15,7 +15,10 @@
       <h1>Base experience: {{ $route.params.base_experience }}</h1>
       <h1>Weight: {{ $route.params.weight }}</h1>
     </div>
-    <CommentCard
+    
+<create-comment @create-new-comment="addcomments" />
+
+    <comment-card
       v-for="(item, index) in Comment"
       :key="index"
       :comments="item"
@@ -24,15 +27,20 @@
 </template>
 <script>
 import CommentCard from "@/components/CommentCard.vue";
+import CreateComment from "@/components/CreateComment.vue";
 import axios from "axios";
 
 export default {
   name: "Pokédex",
   components: {
     CommentCard,
+    CreateComment,
+
   },
   data() {
     return {
+      content: "",
+
       Comment: [],
     };
   },
@@ -50,8 +58,17 @@ export default {
           console.log(response.data);
         });
     },
-  },
-};
+    
+     addcomments() {
+       axios
+        .post("http://127.0.0.1:8000/api/createcomment/", 
+
+        )
+     }   
+     
+    },
+  };
+
 </script>
 
 <style>
