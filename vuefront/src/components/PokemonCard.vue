@@ -3,6 +3,7 @@
     <div>
       <button @click="redirect()">Details</button>
       <img :src="require(`@/assets/${pokemons.image}`)" width="150" height="150" />
+      <p>Id: {{ pokemons.id }}</p>
       <p>Name: {{ pokemons.name }}</p>
       <!-- <p>height: {{ pokemons.height }}</p>
       <p>base experience: {{ pokemons.base_experience }}</p>
