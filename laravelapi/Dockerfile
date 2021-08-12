@@ -1,32 +1,60 @@
 FROM php:7.4-fpm
 
-#Get Composer
-FROM composer:2.0 as vendor
+# Copy composer.lock and composer.json
+COPY composer.lock composer.json /var/www/
 
-WORKDIR /app
+# Set working directory
+WORKDIR /var/www
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    git \
+    curl
+
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install extensions
+RUN apt-get update \
+     && apt-get install -y libzip-dev \
+     && docker-php-ext-install zip
+RUN docker-php-ext-install pdo_mysql zip exif pcntl
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install gd
+ADD . /var/www
+# RUN  chmod -R 775 /var/www
+# RUN  chown -R www-data:www-data /var/www
+RUN  php artisan key:generate
+RUN  php artisan config:cache
+RUN  php artisan config:clear
 
 
-COPY composer.json composer.json
-COPY composer.lock composer.lock
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer install \
-    --no-interaction \
-    --no-plugins \
-    --no-scripts \
-    --no-dev \
-    --prefer-dist
+# Add user for laravel application
+# RUN groupadd -g 1000 www
+# RUN useradd -u 1000 -ms /bin/bash -g www www
 
-COPY . .
-RUN composer dump-autoload
+# Copy existing application directory contents
+COPY . /var/www
 
-# Copy Composer dependencies
-COPY --from=vendor app/vendor/ ./vendor/
-COPY . .
+# Copy existing application directory permissions
+# COPY --chown=www:www . /var/www
+COPY . /var/www
 
+# Change current user to www
+# USER www
 
-# Run Laravel commands
-RUN php artisan optimize:clear
-
-CMD php artisan serve --host=0.0.0.0 --port=8080
-
-EXPOSE 8080
+# Expose port 9000 and start php-fpm server
+EXPOSE 8000
+CMD ["php-fpm"]
