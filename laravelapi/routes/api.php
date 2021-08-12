@@ -47,3 +47,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 Route::get('comments', [CommentsController::class, 'index']);
 Route::get('comments/{id}', [CommentsController::class, 'getCommentById']);
+Route::get('comments/search/pokemons/{pokemon_id}', [CommentsController::class, 'getCommentByPokemonId']);

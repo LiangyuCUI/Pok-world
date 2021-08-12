@@ -26,6 +26,20 @@ class CommentsController extends Controller
         return response()->json($comment);
     }
 
+    // public function getCommentByPokemonId($pokemon_id){
+
+    //     $comment = Comment::find($pokemon_id);
+
+    //     // return response()->json($comment);
+    //     return Comment::where('pokemon_id', 'like', )->get();
+        
+    // }
+    
+    public function getCommentByPokemonId($pokemon_id)
+    {
+        return Comment::where('pokemon_id', 'like', '%'.$pokemon_id.'%')->get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

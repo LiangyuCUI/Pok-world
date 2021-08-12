@@ -16,7 +16,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/pokédex',
+    path: '/pokédex/',
     name: 'Pokédex',
     // route level code-splitting
     // this generates a separate chunk (pokédex.[hash].js) for this route
