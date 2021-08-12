@@ -14,7 +14,7 @@ export default {
 
 <style>
 .app{
-font-family: cursive;
+font-family: Bradley Hand, cursive;
  text-align: center;
 }
 </style>
