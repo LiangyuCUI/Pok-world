@@ -14,7 +14,10 @@ export default {
 
 <style>
 .app{
-font-family: Bradley Hand, cursive;
+font-family:  Verdana;
  text-align: center;
+}
+body{
+background-color: rgb(224, 232, 250);
 }
 </style>

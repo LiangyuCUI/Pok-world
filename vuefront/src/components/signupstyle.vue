@@ -57,7 +57,9 @@
           <input v-model="birthdate" type="date" />
         </div>
         <!-- <button class="button button-block">signup</button> -->
-        <span @click="createUser" class="signupbutton" type="submit"
+        <span @click="createUser" class="signupbutton" type="submit" title="click for signup"
+
+
           ><img src=../assets/pokeball.png height="35"/></span
         >
         <span class="clearButton" type="button">&#10060;</span>
@@ -96,6 +98,7 @@ export default {
 
         .then((response) => {
           response.data;
+          this.$router.push({name: "Login"});
         });
     },
     checkForm: function (e) {

@@ -14,6 +14,13 @@
       <h1>Height: {{ $route.params.height }}</h1>
       <h1>Base experience: {{ $route.params.base_experience }}</h1>
       <h1>Weight: {{ $route.params.weight }}</h1>
+      <button
+      class="back-button"
+      style="background-color: #FF7F50"
+      @click="$router.back()"
+    >
+      Back to home
+    </button>
     </div>
     
 <create-comment @create-new-comment="addcomments(content)" />
