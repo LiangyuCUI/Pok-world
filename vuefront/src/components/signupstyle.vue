@@ -96,6 +96,7 @@ export default {
 
         .then((response) => {
           response.data;
+          this.$router.push({name: "Login"});
         });
     },
     checkForm: function (e) {
@@ -124,7 +125,6 @@ export default {
   
   .then((response) => {
     (response.data)
-    this.$router.push({name: "Login"});
   })
 
       if (!this.name) {
