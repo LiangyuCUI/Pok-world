@@ -57,7 +57,9 @@
           <input v-model="birthdate" type="date" />
         </div>
         <!-- <button class="button button-block">signup</button> -->
-        <span @click="createUser" class="signupbutton" type="submit"
+        <span @click="createUser" class="signupbutton" type="submit" title="click for signup"
+
+
           ><img src=../assets/pokeball.png height="35"/></span
         >
         <span class="clearButton" type="button">&#10060;</span>
@@ -86,7 +88,7 @@ export default {
     createUser: function (e) {
       this.checkForm(e);
       axios
-        .post("http://127.0.0.1:8000/api/auth/register", {
+        .post(process.env.VUE_APP_ENDPOINT + "/api/auth/register", {
           name: this.name,
           email: this.email,
           password: this.password,
@@ -96,6 +98,7 @@ export default {
 
         .then((response) => {
           response.data;
+          this.$router.push({name: "Login"});
         });
     },
     checkForm: function (e) {
@@ -113,7 +116,7 @@ export default {
 
 
   axios
-  .post('http://127.0.0.1:8000/api/auth/register', 
+  .post(process.env.VUE_APP_ENDPOINT + '/api/auth/register', 
   {
     name: this.name,
     email: this.email,
@@ -124,7 +127,6 @@ export default {
   
   .then((response) => {
     (response.data)
-    this.$router.push({name: "Login"});
   })
 
       if (!this.name) {

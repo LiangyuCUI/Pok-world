@@ -37,7 +37,9 @@
           >
         </p>
 
-        <span @click="loginUser" class="loginbutton" type="submit"
+        <span @click="loginUser" class="loginbutton" type="submit" title="click for login"
+
+
           ><img src=../assets/pokeball.png height="35"/></span
         >
       </div>
@@ -60,7 +62,7 @@ export default {
   methods: {
     loginUser: function () {
       axios
-        .post("http://127.0.0.1:8000/api/auth/login", {
+        .post(process.env.VUE_APP_ENDPOINT + "/api/auth/login", {
           email: this.email,
           password: this.password,
         })
@@ -73,7 +75,9 @@ export default {
           let token = response.data.token;
           
           localStorage.setItem("token", token);
-          // this.$router.push({ name: "Pokelist" });
+
+          this.$router.push({ name: "Home" });
+
         });
 
     },

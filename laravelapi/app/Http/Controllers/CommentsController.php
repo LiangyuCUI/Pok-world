@@ -45,18 +45,35 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function create(Request $request)
+    // {
+    //     $comment = new Comment;
+    //     $comment->content = $request->content;
+    //     $comment->user_id = auth()->id();
+    //     $comment->pokemon_id = $request->pokemon_id;
+    //     $comment->save();
+ 
+    //     return response()->json([
+    //         'message' => 'New Comment Added'
+    //     ]);
+    // }
+
     public function create(Request $request)
     {
-        $comment = new Comment;
-        $comment->content = $request->content;
-        $comment->user_id = $request->user_id;
-        $comment->pokemon_id = $request->pokemon_id;
-        $comment->save();
- 
-        return response()->json([
-            'message' => 'New Comment Added'
+        Comment::create([
+           
+            'user_id' =>  auth()->id(),
+            'content' => $request->input('content'),
+            'pokemon_id' => $request->input('pokemon_id'),
         ]);
+        return response()->json([
+            'message' => 'New Comment Added',
+            'body' => $request->all(),
+                
+            ]);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -64,10 +81,7 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
