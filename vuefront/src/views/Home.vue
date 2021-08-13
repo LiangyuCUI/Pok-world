@@ -35,7 +35,7 @@ export default {
   methods: {
 getAllPokemons() {
     axios
-    .get("http://127.0.0.1:8000/api/pokemons").then((response) => {
+    .get(process.env.VUE_APP_ENDPOINT + "/api/pokemons").then((response) => {
       this.PokemonList = response.data
     });
   },
