@@ -43,7 +43,7 @@ export default {
   methods: {
     getAllcomments() {
       axios
-        .get("http://127.0.0.1:8000/api/comments/search/pokemons/" + this.$route.params.id )
+        .get(process.env.VUE_APP_ENDPOINT + "/api/comments/search/pokemons/" + this.$route.params.id )
         .then((response) => {
           // console.log(response);
           this.Comment = response.data;

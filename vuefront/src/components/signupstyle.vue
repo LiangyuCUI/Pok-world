@@ -86,7 +86,7 @@ export default {
     createUser: function (e) {
       this.checkForm(e);
       axios
-        .post("http://127.0.0.1:8000/api/auth/register", {
+        .post(process.env.VUE_APP_ENDPOINT + "/api/auth/register", {
           name: this.name,
           email: this.email,
           password: this.password,
@@ -113,7 +113,7 @@ export default {
 
 
   axios
-  .post('http://127.0.0.1:8000/api/auth/register', 
+  .post(process.env.VUE_APP_ENDPOINT + '/api/auth/register', 
   {
     name: this.name,
     email: this.email,

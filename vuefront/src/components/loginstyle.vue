@@ -60,7 +60,7 @@ export default {
   methods: {
     loginUser: function () {
       axios
-        .post("http://127.0.0.1:8000/api/auth/login", {
+        .post(process.env.VUE_APP_ENDPOINT + "/api/auth/login", {
           email: this.email,
           password: this.password,
         })
