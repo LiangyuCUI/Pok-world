@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style>
+
 .details {
   display: inline-block;
   height: 30em;
