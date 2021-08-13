@@ -9,14 +9,21 @@
         width="150"
         height="150"
       />
-      <!-- <h1>Id: {{ $route.params.id }}</h1> -->
+      <h1>Id: {{ $route.params.id }}</h1>
       <h1>Name: {{ $route.params.name }}</h1>
       <h1>Height: {{ $route.params.height }}</h1>
       <h1>Base experience: {{ $route.params.base_experience }}</h1>
       <h1>Weight: {{ $route.params.weight }}</h1>
+      <button
+      class="back-button"
+      style="background-color: #FF7F50"
+      @click="$router.back()"
+    >
+      Back to home
+    </button>
     </div>
     
-<create-comment @create-new-comment="addcomments" />
+<create-comment @create-new-comment="addcomments(content)" />
 
     <comment-card
       v-for="(item, index) in Comment"
@@ -59,12 +66,38 @@ export default {
         });
     },
     
-     addcomments() {
-       axios
-        .post("http://127.0.0.1:8000/api/createcomment/", 
+     addcomments(content) {
+      //  axios
+      //   .post("http://127.0.0.1:8000/api/createcomment/", 
 
 
-        )
+      //   )
+      var data = JSON.stringify({
+  content: content.content,
+  pokemon_id: this.$route.params.id,
+  
+});
+
+var config = {
+  method: 'post',
+  url: 'http://127.0.0.1:8000/api/createcomment',
+  headers: { 
+    Authorization: 'Bearer' + localStorage.getItem("token"), 
+    'Content-Type': 'application/json',
+    Accept: "*/*",
+  },
+  data : data
+};
+
+
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
      }   
      
     },
@@ -90,7 +123,4 @@ export default {
   overflow: hidden;
 }
 
-.comment {
-  font-size: 100;
-}
 </style>

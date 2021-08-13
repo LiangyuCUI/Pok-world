@@ -37,7 +37,9 @@
           >
         </p>
 
-        <span @click="loginUser" class="loginbutton" type="submit"
+        <span @click="loginUser" class="loginbutton" type="submit" title="click for login"
+
+
           ><img src=../assets/pokeball.png height="35"/></span
         >
       </div>
@@ -73,7 +75,9 @@ export default {
           let token = response.data.token;
           
           localStorage.setItem("token", token);
-           this.$router.push({ name: "Home" });
+
+          this.$router.push({ name: "Home" });
+
         });
 
     },
