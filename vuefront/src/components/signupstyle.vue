@@ -127,7 +127,6 @@ export default {
   
   .then((response) => {
     (response.data)
-    this.$router.push({name: "Login"});
   })
 
       if (!this.name) {

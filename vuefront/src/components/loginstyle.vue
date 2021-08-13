@@ -75,7 +75,9 @@ export default {
           let token = response.data.token;
           
           localStorage.setItem("token", token);
+
           this.$router.push({ name: "Home" });
+
         });
 
     },
